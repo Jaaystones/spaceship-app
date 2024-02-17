@@ -70,3 +70,7 @@ gem 'sassc'
 
 gem "devise", "~> 4.9"
 gem 'jquery-rails'
+
+group :development do
+  gem 'letter_opener'
+end
