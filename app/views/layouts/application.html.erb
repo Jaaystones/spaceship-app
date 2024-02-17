@@ -1,0 +1,22 @@
+<!-- application.html.erb -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Your Application Title</title>
+  <!-- Add your stylesheet link tags here -->
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+  <%= render 'layouts/navbar' %>
+  
+  <div class="container">
+    <%= yield %>
+  </div>
+
+  <!-- Add your JavaScript includes here -->
+  <%= javascript_include_tag 'application' %>
+</body>
+</html>
