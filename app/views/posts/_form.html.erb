@@ -4,8 +4,8 @@
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
       <ul>
-        <% post.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% post.errors.each do |attribute, error| %>
+          <li><%= "#{attribute.to_s.titleize} #{error}" %></li>
         <% end %>
       </ul>
     </div>
@@ -13,17 +13,12 @@
 
   <div>
     <%= form.label :attachment, style: "display: block" %>
-    <%= form.text_field :attachment %>
+    <%= form.file_field :attachment %>
   </div>
 
   <div>
     <%= form.label :content, style: "display: block" %>
     <%= form.text_area :content %>
-  </div>
-
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
   </div>
 
   <div>

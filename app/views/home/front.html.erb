@@ -2,4 +2,30 @@
   <h1>Welcome to Spacesheep!</h1>
   <p class="lead">Connect and share with friends, family, and the world.</p>
   <hr class="my-4">
-  
+</div>
+
+<div class="container">
+  <h2>Public Activities</h2>
+  <% @activities.each do |activity| %>
+    <div>
+      <p>User: <%= activity.owner.email %></p>
+      <% if activity.trackable_type == 'Post' %>
+        <% post = activity.trackable %>
+        <% if post.present? %> <!-- Add conditional check for post -->
+          <p>Title: <%= post.content %></p>
+          <% if post.attachment.present? %>
+            <%= image_tag post.attachment.url %>
+          <% end %>
+          <p>Likes: <%= post.votes_for.size %></p>
+          <p>Comments: <%= post.comments.count %></p>
+          <!-- Comment Form -->
+          <%= form_with(model: [post, Comment.new], remote: true) do |form| %>
+            <%= form.text_area :content, placeholder: "Add a comment..." %>
+            <%= form.submit "Comment", class: "btn btn-primary" %>
+          <% end %>
+        <% end %>
+      <% end %>
+      <hr> <!-- Line separator -->
+    </div>
+  <% end %>
+</div>
